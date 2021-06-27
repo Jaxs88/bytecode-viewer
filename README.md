@@ -3,15 +3,11 @@
 Bytecode Viewer - a lightweight user friendly Java Bytecode Viewer.
 
 #### New Features
-* WAR & JSP Loading
-* JADX-Core Decompiler
-* Fixed APK & dex loading
-* Fixed Java 10+ classfiles
-* Better visual feedback due to the new busy icon system
-* Synchronized viewing pane option & quick method selection
-* Updated most libraries to their 2019 version
-* Tons of bug fixes and general improvements
-
+* Dark Mode
+* Updated nearly all dependencies (incl. decompilers like CFR, JD-GUI etc.)
+* Updated ASM library to version 9.1
+* Added support to Java files compiled using JDK > 13
+* Migrated to Maven
 
 #### Links
 * Website: https://bytecodeviewer.com
@@ -28,15 +24,14 @@ Bytecode Viewer - a lightweight user friendly Java Bytecode Viewer.
 * Krakatau Integration for Bytecode assembly/disassembly.
 * Smali/BakSmali Integration - You can now edit class files/dex files via smali!
 * APK/DEX Support - Using Dex2Jar and Jar2Dex it's able to load and save APKs with ease!
-* Java Decompiler - It utilizes FernFlower, Procyon, CFR, and JD for decompilation.
+* Java Decompiler - It utilizes FernFlower, Procyon, CFR, JD & JADX for decompilation.
 * Bytecode Decompiler - A modified version of CFIDE's.
 * Hex Viewer - Powered by JHexPane.
 * Each Decompiler/Editor/Viewer is toggleable, you can also select what will display on each pane.
 * Fully Featured Search System - Search through strings, functions, variables and more!
 * A Plugin System With Built In Plugins - (Show All Strings, Malicious Code Scanner, String Decrypters, etc)
-* Fully Featured Scripting System That Supports Groovy.
+* Fully Featured Scripting System That Supports Groovy, Java, Python, Ruby & Javascript.
 * EZ-Inject - Graphically insert hooks and debugging code, invoke main and start the program.
-* Recent Files & Recent Plugins.
 * And more! Give it a try for yourself!
 
 #### Command Line Input
@@ -52,17 +47,33 @@ Bytecode Viewer - a lightweight user friendly Java Bytecode Viewer.
 
 ## What is Bytecode Viewer?
 Bytecode Viewer (BCV) is an Advanced Lightweight Java Bytecode Viewer, GUI Java Decompiler, GUI Bytecode Editor, GUI Smali, GUI Baksmali, GUI APK Editor, GUI Dex Editor, GUI APK Decompiler, GUI DEX Decompiler, GUI Procyon Java Decompiler, GUI Krakatau, GUI CFR Java Decompiler, GUI FernFlower Java Decompiler, GUI DEX2Jar, GUI Jar2DEX, GUI Jar-Jar, Hex Viewer, Code Searcher, Debugger and more.
+
 It's written completely in Java, and it's open sourced. It's currently being maintained and developed by Konloch.
 
-There is also a plugin system that will allow you to interact with the loaded classfiles, for example you can write a String deobfuscator, a malicious code searcher, or something else you can think of.
-You can either use one of the pre-written plugins, or write your own. It supports groovy scripting. Once a plugin is activated, it will execute the plugin with a ClassNode ArrayList of every single class loaded in BCV, this allows the user to handle it completely using ASM.
-
 ## How do I install BCV?
-Download the latest version from https://github.com/konloch/bytecode-viewer/releases and run the Bytecode-Viewer-2.9.x.jar.
-You may need to execute it via command line ```java -jar Bytecode-Viewer-2.9.x.jar``` (replace the X with the current minor version)
+Download the latest version from https://github.com/konloch/bytecode-viewer/releases and run the Bytecode-Viewer-2.10.x.jar.
+You may need to execute it via command line ```java -jar Bytecode-Viewer-2.10.x.jar``` (replace the X with the current minor version)
 
 ## How do I use BCV?
 All you have to do is add a jar, class or APK file into the workspace. Then select the file you'd like to view from the workspace. BCV will automatically start decompiling the class in the background. When it's done it will show the Source code, Bytecode and Hexcode of the class file you chose (depending on the View panes you have selected). If you are trying to view a resource BCV will attempt to display it the best it can with code highlighting or by embedding the resources itself.
 
-##### Are you a Java Reverse Engineer? Do you want to learn?
+## How do the plugins work?
+There is also a plugin system that will allow you to interact with the loaded classfiles. You could for example write a String deobfuscator, a malicious code searcher, or anything else you can think of.
+
+You can either use one of the pre-written plugins, or write your own. The plugin system supports groovy, python, ruby, java and javascript scripting.
+
+Once a plugin is activated, it will execute the plugin with a ClassNode ArrayList of every single class loaded in BCV, this allows the user to handle it completely using ASM.
+
+## Instructions to compile
+
+Just clone this repo and run ``mvn package``. It's that simple!
+
+## Working on the source
+
+Open the Maven project (e.g. in IntelliJ, open the ``pom.xml`` as a project file).
+
+## Java Heap Space Issues
+Start BCV with more RAM, e.g. `java -Xmx3G -jar BCV.jar`
+
+#### Are you a Java Reverse Engineer? Do you want to learn?
 Join The Bytecode Club Today! - https://the.bytecode.club
